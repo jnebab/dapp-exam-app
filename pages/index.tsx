@@ -2,26 +2,14 @@ import type { NextPage } from "next";
 import { SwitchHorizontalIcon } from "@heroicons/react/solid";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { useWeb3React, Web3ReactProvider } from "@web3-react/core";
-import useBalance from "../hooks/useBalance";
-import WalletDetails from "../components/WalletDetails";
+import { useWeb3React } from "@web3-react/core";
+import useBalance from "@/hooks/useBalance";
+import WalletDetails from "@/components/WalletDetails";
 import { Web3Provider } from "@ethersproject/providers";
 import { Web3ReactContextInterface } from "@web3-react/core/dist/types";
 import { InjectedConnector } from "@web3-react/injected-connector";
-import Button from "../components/Button";
-import Input from "../components/Input";
-
-function getLibrary(provider: any): Web3Provider {
-  const library = new Web3Provider(provider);
-  library.pollingInterval = 2000;
-  return library;
-}
-
-const App: NextPage = () => (
-  <Web3ReactProvider getLibrary={getLibrary}>
-    <Home />
-  </Web3ReactProvider>
-);
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 
 const Home: NextPage = () => {
   const [nepBalance, setNEPBalance] = useState<string>("");
@@ -170,7 +158,7 @@ const Home: NextPage = () => {
                     />
                   ) : (
                     <p className="text-lg text-red-400 my-8">
-                      Wallet not connected. Please click 'Connect' button below.
+                      {`Wallet not connected. Please click 'Connect' button below.`}
                     </p>
                   )}
                 </div>
@@ -203,4 +191,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default App;
+export default Home;
