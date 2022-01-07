@@ -80,7 +80,7 @@ const Home: NextPage = () => {
       }
     }
     signIn();
-  }, [active, library]);
+  }, [active, library, account]);
 
   return (
     <div className="flex flex-col h-screen w-screen p-8 md:px-4 md:items-center bg-neutral-900">
