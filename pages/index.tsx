@@ -9,6 +9,7 @@ import { Web3Provider } from "@ethersproject/providers";
 import { Web3ReactContextInterface } from "@web3-react/core/dist/types";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import Button from "../components/Button";
+import Input from "../components/Input";
 
 function getLibrary(provider: any): Web3Provider {
   const library = new Web3Provider(provider);
@@ -64,7 +65,6 @@ const Home: NextPage = () => {
   async function handleDisconnectFromMetamask() {
     deactivate();
     setWalletSignature("");
-    handleModal();
   }
 
   useEffect(() => {
@@ -83,41 +83,37 @@ const Home: NextPage = () => {
   }, [active, library]);
 
   return (
-    <div className="flex flex-col min-h-screen min-w-screen">
-      <h1 className="mb-12 w-full">Neptune Mutual</h1>
+    <div className="flex flex-col h-screen w-screen p-8 md:px-4 md:items-center bg-neutral-900">
+      <h1 className="my-20 text-center text-white uppercase">Neptune Mutual</h1>
 
-      <div className="w-[480px] min-w-sm mx-auto p-8 shadow-sm rounded-md border-neutral-200 border">
+      <div className="max-w-sm md:w-[480px] p-8 shadow-sm rounded-md border-neutral-200 border bg-white">
         <h2 className="mb-4">Crypto Converter</h2>
 
         <form className="w-full mb-4">
-          <div className="flex flex-col text-left">
-            <label>NEP</label>
-            <input
-              type="text"
-              value={nepBalance}
-              onChange={handleNEPInputChange}
-              placeholder="0.00"
-              className="border border-neutral-200 rounded-md"
-            />
-          </div>
+          <Input
+            id="nep"
+            type="text"
+            value={nepBalance}
+            onChange={handleNEPInputChange}
+            placeholder="0.00"
+            label="NEP"
+          />
           <div className="w-full flex justify-center text-neutral-400 my-6">
             <SwitchHorizontalIcon className="h-5 w-5" />
           </div>
-          <div className="flex flex-col text-left">
-            <label>BUSD</label>
-            <input
-              type="text"
-              value={busdBalance}
-              onChange={handleBUSDInputChange}
-              placeholder="0.00"
-              className="border border-neutral-200 rounded-md"
-            />
-          </div>
+          <Input
+            id="busd"
+            type="text"
+            value={busdBalance}
+            onChange={handleBUSDInputChange}
+            placeholder="0.00"
+            label="BUSD"
+          />
         </form>
         <div>
           <Button
             label="Check Wallet Details"
-            classNames="text-blue-500 text-sm"
+            classNames="text-sm"
             type="link"
             onClick={handleModal}
           />
@@ -194,10 +190,7 @@ const Home: NextPage = () => {
                         type="primary"
                         classNames="mr-2"
                       />
-                      <Button
-                        label="Connect"
-                        onClick={handleDisconnectFromMetamask}
-                      />
+                      <Button label="Cancel" onClick={handleModal} />
                     </div>
                   )}
                 </div>

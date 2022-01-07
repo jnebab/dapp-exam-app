@@ -28,7 +28,7 @@ export default function WalletDetails({
         value={`${account?.substr(0, 4)}...${account?.substr(-4, 4)}`}
       />
       <WalletItem name="Chain ID" value={chainId} />
-      <WalletItem name="Balance" value={`Ξ ${balance}`} />
+      <WalletItem name="Balance" value={`Ξ ${Number(balance)?.toFixed(2)}`} />
     </div>
   );
 }

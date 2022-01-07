@@ -20,7 +20,7 @@ a {
 }
 
 h1 {
-  @apply font-bold text-4xl;
+  @apply font-heading font-bold text-3xl md:text-4xl;
 }
 
 h2 {
